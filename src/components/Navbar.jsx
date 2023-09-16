@@ -1,28 +1,29 @@
-import { NavLink as Link } from "react-router-dom";
+
+import React from "react";
+import {ShoppingCart} from 'phosphor-react'
+
 
 //Create a navigation bar
-export default function Navbar(){
+export default function Navbar() {
     return(
-        <nav>
+    <div className='nav'>
+        <a href ="/" className="site-title"><h1>Le~Fiesty Gal</h1></a>
             <ul>
-            <li>
-                <Link to ="/">Home</Link>
+                <li>
+                    <a href="/">Home</a>
                 </li>
                 <li>
-                <Link to ="/Login">Login</Link>
+                    <a href="/Login">Login</a>
                 </li>
+
                 <li>
-                <Link to ="/Users">Users</Link> 
+                    <a href="/Products">Products</a></li>
+                    <li>
+                    <a href="/Cart"> <ShoppingCart size={32}/></a>
                 </li>
-                <li>
-                <Link to ="/Products">Products</Link> 
-                </li>
-                <li>
-                <Link to ="/Cart">Cart</Link>   
-                </li>
-                
+
             </ul>
-        </nav>
-      
+        </div>
     )
 }
+
