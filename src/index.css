@@ -46,6 +46,7 @@ button {
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
+  
 }
 button:hover {
   border-color: #646cff;
@@ -54,6 +55,19 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+
+input, button {
+  width: 40%;
+  height: 40px;
+  font-size: 15px;
+  margin: 10px;
+  color:cornflowerblue
+
+}
+input:focus {
+  outline: 1px dashed red;
+}
+
 
 @media (prefers-color-scheme: light) {
   :root {
@@ -71,42 +85,36 @@ button:focus-visible {
 .Product-Card{
   background-color: antiquewhite;
   justify-content: center;
+  
+
 }
 
 .Products{
-  display:flexbox;
-  margin:15px; 
-  padding: 30px;
-  width:700px;
-  line-height: 1;
-  font-size-adjust: var(#1a1a1a);
-  grid-template-rows: subgrid;
+  margin:50px; 
+  padding: 2px;
   border-radius: 20px;
+  line-height: 1;
   text-align: center;
+  font-size: large;
+  display: grid;
+  grid-template-columns: 350px 350px 350px;
+  gap: 45px;
+  place-items: center;
 }
 
 .Product-Image{
-  display: flexbox;
-  padding: 10px;
-  margin: 10px;
-  line-height: 50px;
+  grid-template-columns: 400px 400px 400px;
+  grid-template-rows: 25px 25px 25px;
+  padding: 5px;
+  margin: 50px;
   justify-content: center;
-  
 }
 
+.form {
+  display: flex;
+  flex-direction: column;
+}
 
-.button{
-    background-color: #4CAF50;
-    border: 1px;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-  }
   
 .Navbar{
   display:block;
@@ -132,5 +140,23 @@ button:focus-visible {
 .addtocartbuttn:hover{
   background-color:cornflowerblue;
   color:coral;
-  cursor: pointer
+  cursor: pointer;
+  padding:1px;
+  margin:1px;
+
+
+}
+
+.product-description{
+text-align: justify;
+font-size: medium;
+}
+
+.Login{
+  text-align: center;
+  padding: 2px;
+  margin: 3px;
+  height: 5px;
+  width: 5px;
+  grid-template-rows: 5px 5px;
 }
