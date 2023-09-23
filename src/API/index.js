@@ -1,5 +1,5 @@
 
-const Base_url=('https://fakestoreapi.com/products')
+const url=('https://fakestoreapi.com/products/category/${}')
 
 //Get all products
 fetch('https://fakestoreapi.com/products')

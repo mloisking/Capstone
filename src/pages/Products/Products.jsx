@@ -4,10 +4,9 @@ import { Link } from 'react-router-dom';
 export default function Products() {
   const [products, setProducts] = useState([])
   const [categories, setCategories] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState('all');
   const [priceRange, setPriceRange] = useState(0);
   const [sortBy, setSortBy] = useState('price');
-  const [filterby, setFiltery] = useState('category');
+  
 
   useEffect(() => {
     async function fetchAllProducts() {
@@ -79,7 +78,9 @@ export default function Products() {
     let date=new Date()
     date=formatDate(date)
 
-    fetch('https://fakestoreapi.com/carts',{
+    //Get users cart
+
+    fetch('https://fakestoreapi.com/carts/user/2',{
             method:"POST",
             body:JSON.stringify(
                 {
@@ -118,8 +119,6 @@ export default function Products() {
       }
       )
       }
-
-
       <div className="Categories">
         {categories.map((category) => {
           return(
@@ -135,4 +134,3 @@ export default function Products() {
     </div>
   )
 }
-

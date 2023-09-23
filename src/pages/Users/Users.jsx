@@ -1,13 +1,15 @@
 import { useEffect, useState } from 'react';
 
+
 //Get all users
 export default function Users() {
   const [users, setUsers] = useState([])
+  
 
   useEffect(() => {
     async function fetchAllUsers() {
       try {
-        const response = await fetch('https://fakestoreapi.com/users')
+        const response = await fetch('https://fakestoreapi.com/users',)
         const users = await response.json();
         console.log(users, "users");
         setUsers(users);
@@ -18,6 +20,17 @@ export default function Users() {
 
     fetchAllUsers();
   }, []);
+
+//Sort users from API
+  try{
+  const response=await fetch('https://fakestoreapi.com/users?sort=desc')
+  const result = await response.json();
+  console.log(result);
+  setSortUsers(result);
+} catch (error) {
+  console.error(error);
+}
+
 
   return (
     <div className="Users">
@@ -35,4 +48,4 @@ export default function Users() {
       })}
     </div>
   )
-}
+    }
