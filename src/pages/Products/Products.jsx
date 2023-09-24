@@ -4,14 +4,15 @@ import { Link } from 'react-router-dom';
 export default function Products() {
   const [products, setProducts] = useState([])
   const [categories, setCategories] = useState([]);
-  const [priceRange, setPriceRange] = useState(0);
-  const [sortBy, setSortBy] = useState('price');
+  const [priceRange, setPriceRange] = useState(null);
+  const [sortBy, setSortBy] = useState('asc');
+  // const[filterBy, setFilterBy]=useState(price)
   
-
+//Get all products from API
   useEffect(() => {
     async function fetchAllProducts() {
       try {
-        const response = await fetch('https://fakestoreapi.com/products')
+        const response = await fetch(`https://fakestoreapi.com/products?sort=${sortBy}`)
         const result = await response.json();
         console.log(result);
         setProducts(result);
@@ -20,8 +21,30 @@ export default function Products() {
       }
     }
     fetchAllProducts();
-  }, []);
+  }, [sortBy]);
 
+  // function sortByPrice(ascending) {
+  //   filteredProducts.sort((a, b) => {
+  //     if (!ascending) {
+  //       return b.price - a.price
+  //     }
+  //     return a.price - b.price
+  //   })
+  // }
+  // let filteredProducts = products;
+  // if (selectedCategory !== 'all') {
+  //   filteredProducts = products.filter(product => product.category === selectedCategory);
+  // }
+  // filteredProducts = filteredProducts.filter(product => product.price <= priceRange);
+  // console.log(products);
+  // console.log(sortBy);
+  // if(sortBy === 'price') {
+  //   sortByPrice();
+  // } else if (sortBy === 'rating') {
+  //   filteredProducts.sort((a, b) => b.rating.rate - a.rating.rate);
+  // }
+  
+  //Update a product from API
   const updateProduct = async () => {
     try {
       const response = await fetch('https://fakestoreapi.com/products/1', {
@@ -47,7 +70,7 @@ export default function Products() {
       console.error(err);
     }
   }
-
+//Get all categories of products from API
   useEffect(() => {
     async function fetchAllCategories() {
       try {
@@ -80,7 +103,7 @@ export default function Products() {
 
     //Get users cart
 
-    fetch('https://fakestoreapi.com/carts/user/2',{
+    fetch('https://fakestoreapi.com/carts',{
             method:"POST",
             body:JSON.stringify(
                 {
@@ -94,10 +117,19 @@ export default function Products() {
             .then(json=>console.log(json))
   }
 
+  const handleChange = (e) =>{
+    setSortBy(e.target.value)
+  }
+//map over and render the array of products and categories
   return (
-
     <div className='Products'>
       <button onClick={updateProduct}></button>
+      <label>SortBy</label>
+      <select value={sortBy} onChange={handleChange}>
+        <option value="asc">asc</option>
+        <option value="desc">desc</option>
+        <option value="priceRange">price</option>
+      </select>
       {products.map((product) => {
         return (
           <div className="Product-Card" key={product.id}>
@@ -132,5 +164,6 @@ export default function Products() {
       </div>
 
     </div>
+   
   )
 }

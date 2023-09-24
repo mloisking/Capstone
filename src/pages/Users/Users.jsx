@@ -1,12 +1,16 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 
-//Get all users
+
 export default function Users() {
   const [users, setUsers] = useState([])
-  const[sortUsers, setSortUsers]=useState([])
-  
+  const [sortUsers, setSortUsers] = useState([])
+  const[singleUser, setSingleUser]=useState([])
+  const[updateUser, setUpdateUser]=useState([])
 
+
+//Get all users from API
   useEffect(() => {
     async function fetchAllUsers() {
       try {
@@ -18,36 +22,96 @@ export default function Users() {
         console.error(error);
       }
     };
-
     fetchAllUsers();
   }, []);
 
-//Sort users from API
-const sort=async=()=>{
-  try{
-  const response=await fetch('https://fakestoreapi.com/users?sort=desc')
-  const result = await response.json();
-  console.log(result);
-  setSortUsers(result);
-} catch (error) {
-  console.error(error);
+
+  //Get a single user from API
+  const  getUser = async () => {
+    try {
+      const response = await fetch('https://fakestoreapi.com/users/3', {
+         headers: {
+        'Content-Type': 'application/json',
+      },
+     }
+    );
+    const result = await response.json();
+    console.log(User);
+    setSingleUser(result)
+  } catch (err) {
+    console.error(err);
+  }
 }
 
+//Update a user information
 
-  return (
-    <div className="Users">
-      {users.map((user) => {
-        return (
-          <div key={user.id}>
-            <p>{user.email}</p>
-            <p>{user.username}</p>
-            <p>{user.firstname} {user.lastname}</p>
-            {/* <p>{user.address.city} {user.address.street} {user.address.number} {user.address.zipcode}
-             {user.geolocation.latitude} {user.geolocation.longitude}</p> */}
-            <p>{user.phone}</p>
-          </div>
-        );
-      })}
-    </div>
-  )
+const updateUserInfo= async () => {
+  try {
+fetch('https://fakestoreapi.com/users/7',{
+            method:"PUT",
+            body:JSON.stringify(
+                {
+                email:email,
+                username:username,
+                password:password,
+                name:{
+                    firstname:firstname,
+                    lastname:lastname,
+                },
+                address:{
+                    city:city,
+                    street:street,
+                    number:number,
+                    zipcode:zipcode,
+                    geolocation:{
+                        lat:lat,
+                        long:long,
+                    }
+                },
+                phone:phone,
+                }
+            )
+        })
+        const result = await response.json();
+        console.log(User);
+        setUpdateUser(result)
+      } catch (err) {
+        console.error(err);
+      }
     }
+
+
+//   // fetch('https://fakestoreapi.com/users/1')
+
+// //Sort users from API
+// // const sort=async=()=>{
+//   try{
+//   const response=await fetch('https://fakestoreapi.com/users?sort=desc')
+//   const result = await response.json();
+//   console.log(result);
+//   setSortUsers(result);
+// } catch (error) {
+//   console.error(error);
+// }
+return (
+  <div className="Users">
+    <div className="Single User">
+    {users.map((user) => {
+      return (
+        <div key={user.id}>
+          <Link to={`/singleuser/${user.id}`}>
+         
+          <p>{user.name.firstname} {user.name.lastname}</p>
+          {/* <p>{user.address.city} {user.address.street} {user.address.number} {user.address.zipcode}
+             {user.geolocation.latitude} {user.geolocation.longitude}</p> */}
+         
+          </Link> 
+        </div>
+      );
+    })}
+  </div>
+  </div>
+)
+
+  }
+  
