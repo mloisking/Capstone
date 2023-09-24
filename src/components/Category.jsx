@@ -78,7 +78,7 @@ export default function Category() {
         ))}
       </div>
 
-      <div className="Sort">
+      <div className="Sort-Category">
         <button onClick={() => setCategory("electronics")}>Electronics</button>
         <button onClick={() => setCategory("jewelry")}>Jewelry</button>
         <button onClick={() => setCategory("women's clothing")}>Women's Clothing</button>
