@@ -101,8 +101,8 @@ export default function Products() {
     let date=new Date()
     date=formatDate(date)
 
-    //Get users cart
 
+    //Get users cart
     fetch('https://fakestoreapi.com/carts',{
             method:"POST",
             body:JSON.stringify(
@@ -120,7 +120,7 @@ export default function Products() {
   const handleChange = (e) =>{
     setSortBy(e.target.value)
   }
-//map over and render the array of products and categories
+//Map over and render the array of products and categories
   return (
     <div className='Products'>
       <button onClick={updateProduct}></button>
@@ -142,6 +142,8 @@ export default function Products() {
                 src={product.image} alt={product.title} width="150" height="200"></img>
             </p>
             <p>${product.price}</p>
+            {/* <button onClick={() => handlecart(product)}>Add to Cart</button> */}
+              {/* <button onClick={() => setShowDetails(true)}>Show Details</button> */}
             <div>
             </div>
             <button className="addToCartButtn" onClick={()=>handlecart(product)}>Add to Cart</button>

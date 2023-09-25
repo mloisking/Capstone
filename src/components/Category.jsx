@@ -40,8 +40,8 @@ export default function Category() {
     let date = new Date()
     date = formatDate(date)
 
-    //Get users cart
 
+    //Get users cart
     fetch('https://fakestoreapi.com/carts/', {
       method: "POST",
       body: JSON.stringify(
