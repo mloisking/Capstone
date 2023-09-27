@@ -45,31 +45,33 @@ export default function Products() {
   // }
   
   //Update a product from API
-  const updateProduct = async () => {
-    try {
-      const response = await fetch('https://fakestoreapi.com/products/1', {
-        method: "PUT",
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
+  // const updateProduct = async () => {
+  //   try {
+  //     const response = await fetch('https://fakestoreapi.com/products/1', {
+  //       method: "PUT",
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({
 
-          title: 'Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops',
-          price: '109.95',
-          description: 'Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve.',
-          image: 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg',
-          category: 'mens clothing',
-        }
-        )
-      });
+  //         title: 'Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops',
+  //         price: '109.95',
+  //         description: 'Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve.',
+  //         image: 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg',
+  //         category: 'mens clothing',
+  //       }
+  //       )
+  //     });
 
-      const result = await response.json();
-      console.log(result);
-      return result
-    } catch (err) {
-      console.error(err);
-    }
-  }
+  //     const result = await response.json();
+  //     console.log(result);
+  //     return result
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // }
+
+
 //Get all categories of products from API
   useEffect(() => {
     async function fetchAllCategories() {
@@ -122,32 +124,32 @@ export default function Products() {
   }
 //Map over and render the array of products and categories
   return (
-    <div className='Products'>
-      <button onClick={updateProduct}></button>
+    <>
+     <div className="filter-wrapper">
+      <span></span>
       <label>SortBy</label>
       <select value={sortBy} onChange={handleChange}>
         <option value="asc">asc</option>
         <option value="desc">desc</option>
         <option value="priceRange">price</option>
       </select>
+      </div>
+    <div className='Products'>
       {products.map((product) => {
         return (
           <div className="Product-Card" key={product.id}>
+            <div>
+             <img
+                className="Product-Image"
+                src={product.image} alt={product.title}/></div>
             <p><b>{product.title}</b></p>
             <div className="product-description">
               <p>{product.description}</p></div>
-            <p>
-              <img
-                className="Product-Image"
-                src={product.image} alt={product.title} width="150" height="200"></img>
-            </p>
             <p>${product.price}</p>
-            {/* <button onClick={() => handlecart(product)}>Add to Cart</button> */}
-              {/* <button onClick={() => setShowDetails(true)}>Show Details</button> */}
-            <div>
-            </div>
+            
+            <div className="button-wrapper">
             <button className="addToCartButtn" onClick={()=>handlecart(product)}>Add to Cart</button>
-
+            </div>
           </div>
         )
       }
@@ -166,6 +168,6 @@ export default function Products() {
       </div>
 
     </div>
-   
+   </>
   )
 }

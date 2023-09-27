@@ -80,7 +80,7 @@ export default function Category() {
 
       <div className="Sort-Category">
         <button onClick={() => setCategory("electronics")}>Electronics</button>
-        <button onClick={() => setCategory("jewelry")}>Jewelry</button>
+        <button onClick={() => setCategory("jewelery")}>Jewelery</button>
         <button onClick={() => setCategory("women's clothing")}>Women's Clothing</button>
         <button onClick={() => setCategory("men's clothing")}>Men's Clothing</button>
       </div>

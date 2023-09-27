@@ -13,24 +13,28 @@
 }
 
 .Product-Card{
-  display: grid;
-  flex-direction: column;
   background-color: antiquewhite;
-  justify-content: center;
   text-align: center;
   width:350px;
-  padding: 4px;
+  padding: 10px;
   margin: 10px;
-  line-height: 1.1;
-  align-items: center;
-  grid-template-rows: 50px 300px 200px 20px 0px 50px
+  line-height: 1.1; 
+  display: grid;
+  grid-template-rows: auto auto auto 50px 50px;
+  place-items: center;
 
 
+}
+
+.filter-wrapper{
+  display:flex;
+  justify-content: space-between;
 }
 
 .product-description{
   display: flex;
   align-self: flex-start;
+
 }
 
 .product-card:hover{
@@ -53,13 +57,12 @@
 }
 
 .Product-Image{
-  grid-template-columns: 200px 200px 200px;
-  grid-template-rows: 25px 25px 25px;
+  display: block;
   padding: 3px;
-  margin: 10px;
-  justify-content: center;
-  place-content: center;
-  
+  margin: 10px auto;
+  width:300px;
+  height:300px;
+ ;
 }
 
 
@@ -94,6 +97,11 @@ text-decoration: none;
    height: 400px;
    width:500px;
 
+   place-content: center;
+   position: absolute;
+   left: 50%;
+   transform: translateX(-50%)
+
   }
 
 .login-no-button-button{
@@ -120,19 +128,18 @@ text-decoration: none;
       "footer footer"; */
   
   
+.button-wrapper{
+  text-align: center;
 
+}
 
 .addToCartButtn{
-  display: flex;
   background-color:cornflowerblue;
   color:coral;
   cursor: pointer;
   padding:1px;
   margin:1px;
   width: 100px;
-  box-sizing: content-box;
-  justify-self: center;
-  justify-content: center;
 
 }
 
@@ -224,6 +231,7 @@ white-space: normal
     background-color:lavender;
     cursor: pointer;
     transition: border-color 0.25s;
+    margin: 0 5px;
     
   }
   button:hover {
@@ -234,7 +242,7 @@ white-space: normal
     outline: 4px auto -webkit-focus-ring-color;
   }
   
-  input, button {
+  input {
     width: 40%;
     height: 40px;
     font-size: 15px;
