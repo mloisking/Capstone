@@ -80,19 +80,6 @@ fetch('https://fakestoreapi.com/users/7',{
       }
     }
 
-
-//   // fetch('https://fakestoreapi.com/users/1')
-
-// //Sort users from API
-// // const sort=async=()=>{
-//   try{
-//   const response=await fetch('https://fakestoreapi.com/users?sort=desc')
-//   const result = await response.json();
-//   console.log(result);
-//   setSortUsers(result);
-// } catch (error) {
-//   console.error(error);
-// }
 return (
   <div className="Users">
     <div className="Single User">

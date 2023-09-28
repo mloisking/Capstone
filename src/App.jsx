@@ -1,8 +1,6 @@
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { useState} from "react"
-import './index.css'
-import './App.css'
 import React from "react"
 import Products from './Pages/Products/Products.jsx'
 import Users from './Pages/Users/Users.jsx'
@@ -15,6 +13,9 @@ import Category from './components/Category.jsx'
 import SingleUser from "./components/SingleUser"
 import Contact from "./components/Contact.jsx"
 import Checkout from "./components/checkout"
+import './index.css'
+import './App.css'
+
 // import './logo.jsx'
 
 // import {loadStripe} from '@stripe/stripe-js';

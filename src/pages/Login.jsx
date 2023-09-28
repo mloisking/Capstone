@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 
 //create a login function
-const Login = ({setToken}) => {
+const Login = ({ setToken }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate()
@@ -57,7 +57,7 @@ const Login = ({setToken}) => {
           <div className="login-no-button-button">
             <button type="submit">Login</button>
             <button onClick={() => navigate("/register")}>Register</button>
-            </div>
+          </div>
         </form>
       </div>
 
