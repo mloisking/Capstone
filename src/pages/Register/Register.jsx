@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"
 
 
 //Sign up for an account with username and password
-const Register = (props) => {
+const Register = () => {
     const navigate = useNavigate()
     const [password, setPassword] = useState("")
     const [firstName, setFirstName] = useState("")
@@ -59,31 +59,29 @@ const Register = (props) => {
                             id="lasttname"
                             name="laststname" /></div>
 
+                    <div className="email-field">
+                        <label htmlFor="email">Email Info</label>
+                        <input value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            type="email"
+                            placeholder="**********"
+                            id="email"
+                            name="email"
+                        /></div>
 
-
-                     <div className="email-field">
-                    <label htmlFor="email">Email</label>
-                    <input value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        type="email"
-                        placeholder="**********"
-                        id="email"
-                        name="email"
-                    /></div>
-
-                     <div className="password-field">
-                    <label htmlFor="password">Password</label>
-                    <input value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        type="password"
-                        placeholder="***********"
-                        id="password"
-                        name="password"
-                    /></div>
+                    <div className="password-field">
+                        <label htmlFor="password">Password</label>
+                        <input value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            type="password"
+                            placeholder="***********"
+                            id="password"
+                            name="password"
+                        /></div>
                     <div className="Register-no-button-button"></div>
                     <button type="submit"><b>Create Account</b></button>
-                <button onClick={() => navigate("/login")}>Already have an account? Click to login</button>
-            </form>
+                    <button onClick={() => navigate("/login")}>Already have an account? Click to log in</button>
+                </form>
             </div>
         </>
     )

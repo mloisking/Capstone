@@ -9,8 +9,6 @@ function Contact() {
         message: "",
     })
 
-
-
     const { name, email, message } = formData;
 
     const handleChange = (e) => {
@@ -43,13 +41,13 @@ function Contact() {
                 /></div>
 
                 <div className="Messagebox">
-                    <label htmlFor="message">Message</label>
-                    <input type="text-area"
-                    id="message"
-                    value={message}
-                    onChange={handleChange}
-                    /></div>
+                    <label htmlFor="message">Message Box</label>
+                    <div className="text-area-contact">
+                    <textarea name="message" id="message" cols="35" rows="9"></textarea>
+                    </div></div>
+
                     <div className="submit-button">
+
                     <button>Submit</button></div>
 
             </form>

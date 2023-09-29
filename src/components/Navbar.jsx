@@ -13,14 +13,12 @@ export default function Navbar() {
 
             <Link to='/products'>Products</Link>
 
-            <Link to='/login'>Login</Link>
+            <Link to='/login'>Log In</Link>
 
             <Link to='/contact'>Contact Us</Link>
-
+          
             <Link to='/cart'> <ShoppingCart size3={35} />Cart</Link>
            
         </div>
     )
 }
-
-

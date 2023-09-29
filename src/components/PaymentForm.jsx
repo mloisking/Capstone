@@ -1,65 +1,80 @@
-import { useState} from "react"
-import React from "react"
-import {CardElement, useElement, useStripe} from "@stripe/react-stripe-js"
-import axios from "axios"
 
-const CARD_OPTIONS={
-
-}
-export default function PaymentForm(){
-    const [success, setSuccess]=useState(false)
-    const stripe=useStripe()
-    const elements=useElements()
-
-        const handleSubmit=async(e)=>{
-            e.preventDefault()
-
-            const {error, paymentMethod}=await stripe.createPaymentMethod({
-            type: "card",
-            card: elements.getElements(CardElement)
-
-        })
-}
-
-    if(!error){
-        try{
-            const{id}= paymentMethod
-            const response = await axios.post("http://localhost:4000/payment", {
-                amount: 10000,
-                id
-        })
-        if(response.data.success) {
-            console.log("success payment")
-            setSuccess(true)
-        }
-
-    }catch(error){
-console.log("Error", error)
-}
-
-} else {
-console.log(error.message)
-
-}
-
-    return(
-<>
-(!success?
-<form onSubmit={handleSubmit}>
-<fieldset className="FormGroup">
-    <div className="FormRow">
-        <CardElement options={CARD_OPTION}/>
-    </div>
-</fieldset>
-<button>Pay</button>
-</form>
-:
-<div>
-    <h2>You just bought</h2>
-</div>
-)
-</>
+import React from 'react'
+import { useState } from 'react'
 
 
+export default function PaymentForm() {
+    const [formData, setFormData] = useState({
+
+        name:"",
+        cardnumber: "",
+        expdate: "",
+        cid: "",
+    
+    })
+
+    const { name, cardnumber,expdate, cid,}=formData;
+  
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.id]: e.target.value });
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        console.log(formData);
+    }
+    return (
+        <div className="Payment-Container">
+            <div className="Checkout"><h2>Payment Details</h2></div>
+            <form onSubmit={handleSubmit}>
+                <div className="Name-field">
+                    <label htmlFor="name">Name</label>
+                    <input type="text"
+                        id="name"
+                        value={name}
+                        onChange={handleChange}
+                    /></div>
+
+                <div className="cardnumber">
+                    <label htmlFor="cardnumber">card number</label>
+                    <input type="cardnumber"
+                        id="cardnumber"
+                        value={cardnumber}
+                        onChange={handleChange}
+                    /></div>
+
+                    <div className="expdate">
+                        <label htmlFor="expdate">Exp Date</label>
+                        <input type="expdata"
+                            id="expdate"
+                            value={expdate}
+                            onChange={handleChange}
+                        />
+                        </div>
+                        
+                                <div className="cid">
+                            <label htmlFor="cid">CID</label>
+                            <input type="cid"
+                                id="cid"
+                                value={cid}
+                                onChange={handleChange}
+                                />
+                                </div>
+                                <button type onclick="submit"><b>Pay Now</b></button>
+                                
+
+                    </form>
+                    </div>
     )
-}
+};
+               
+                  
+
+        
+
+
+            
+
+
+

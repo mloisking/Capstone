@@ -2,6 +2,7 @@ import { useState } from "react";
 
 export default function UpdateForm({product, fetchUserCart}) {
     const [productQuantity, setProductQuantity]=useState(0)
+    
     //Update a user cart
     const handleSubmit = async (e) => {
     e.preventDefault()
@@ -15,13 +16,14 @@ export default function UpdateForm({product, fetchUserCart}) {
                     {
                         userId: 2,
                         date:product.date,
-                        products: [{ productId: product.productId, quantity: product.productQuantity }]
+                        products: [{ productId: product.productId, quantity: productQuantity }]
+
                     }
                 )
             });
             const result = await response.json();
             console.log(result);
-            fetchUserCart()
+            fetchUserCart(productQuantity)
         } catch (err) {
             console.error(err);
         }

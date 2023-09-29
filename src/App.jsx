@@ -12,14 +12,11 @@ import Home from './Pages/Home/Home.jsx'
 import Category from './components/Category.jsx'
 import SingleUser from "./components/SingleUser"
 import Contact from "./components/Contact.jsx"
-import Checkout from "./components/checkout"
+import Checkout from "./components/checkout.jsx"
+import Footer from './components/footer.jsx'
+// import PaymentForm from './components/PaymentForm.jsx'
 import './index.css'
 import './App.css'
-
-// import './logo.jsx'
-
-// import {loadStripe} from '@stripe/stripe-js';
-// import '@stripe/stripe-js';
 
 
 export default function App() {
@@ -43,8 +40,10 @@ export default function App() {
           <Route path='/category' element={<Category token={token} />}></Route>
           <Route path='/contact' element={<Contact token={token} />}></Route>
           <Route path='/checkout' element={<Checkout token={token} />}></Route>
+          {/* <Route path='/paymentform' element={< PaymentForm token={token} />}></Route> */}
+
         </Routes>
-      
+        <Footer />
       </div>
   );
 }

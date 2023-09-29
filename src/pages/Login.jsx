@@ -55,7 +55,7 @@ const Login = ({ setToken }) => {
               name="password"
             /></div>
           <div className="login-no-button-button">
-            <button type="submit">Login</button>
+            <button type="submit">Log In</button>
             <button onClick={() => navigate("/register")}>Register</button>
           </div>
         </form>
