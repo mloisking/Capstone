@@ -1,3 +1,3 @@
 # Capstone
 Final Project
-le-feisty.netlify.app
+https://le-feisty.netlify.app/
